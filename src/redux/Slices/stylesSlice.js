@@ -4,39 +4,33 @@ const stylesSlice = createSlice({
   name: "style",
   initialState: {
     style: {
-      width: "100"+'px',
-      height: "20"+'px',
-      borderRadius: "0"+'px',
-      borderWidth: "1"+'px',
+      content: "Button",
+      width: "100px",
+      height: "20px",
+      borderRadius: "0px",
+      borderWidth: "1px",
       borderStyle: "solid",
-      backgroundColor: "",
+      borderColor:"#000000",
+      backgroundColor: "#ffffff",
       cursor: "",
-    }
+    },
   },
   reducers: {
     updateStyle: (state, action) => {
       const { id, value } = action.payload;
       switch (id) {
-        case "width":
-          state.style.width = value+'px';
-          break;
-        case "height":
-          state.style.height = value +'px' ;
-          break;
-        case "borderRadius":
-          state.style.borderRadius = value +'px';
-          break;
-        case "borderWidth":
-          state.style.borderWidth = value +'px';
-          break;
-        case "fontweight":
-          state.style.fontWeight = value +'px';
+        case "content":
+        case "borderStyle":
+        case "backgroundColor":
+        case "cursor":
+          case "borderColor":
+          state.style[id] = value;
           break;
         default:
-            return
+          state.style[id] = value + "px";
       }
     },
   },
 });
 export default stylesSlice.reducer;
-export const { updateStyle} = stylesSlice.actions;
+export const { updateStyle } = stylesSlice.actions;

@@ -33,7 +33,7 @@ body{
 .buttongen{
   display: flex;
   margin: 5rem;
-  background-color:#BEE9E8 ;
+
   justify-content: space-around;
   flex-wrap: wrap;
 
@@ -80,4 +80,43 @@ input{
   width: 10%;
 
 }
+.borderstylecontainer{
+  display: flex;
+  flex-direction: column;
+  
+}
+.borderstylewrapper{
+display:flex;
+justify-content: space-around;
+}
+code{
+  background-color: black;
+  color: white;
+ 
+  
+}
+.buttoncssresult,.shadowcssresult{
+ background-color: black;
+ width: 90vw;
+ margin: 5vw;
+ padding: 20px;
+}
 
+.shadowgen{
+  display: flex;
+  margin: 5rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.shadowsettings{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+  width: 40%;
+}
+.boxcontainer{
+  height: 400px;
+  width: 400px;
+}

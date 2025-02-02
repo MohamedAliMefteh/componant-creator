@@ -1,46 +1,60 @@
 import React, { useState } from "react";
-import { updateStyle } from "../redux/Slices/stylesSlice";
 import { useDispatch } from "react-redux";
+import handleChange from "../utils/handleChange";
 
 import Input from "./Input";
 
 const Settings = () => {
   const [value, setValue] = useState({
+    content:'Button',
     width: 100,
     height: 20,
     borderRadius: 0,
-    borderWidth: 0,
-    borderStyle: "",
-    backgroundColor: "",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor:"#000000",
+    backgroundColor: "#ffffff",
     cursor: "",
   });
   const dispatch = useDispatch();
-  const handleChange = (e) => {
-    dispatch(updateStyle({ id: e.target.id, value: e.target.value }));
-    setValue((prevValue) => {
-      const id = e.target.id;
-      const value = e.target.value;
-      return { ...prevValue, [id]: value };
-    });
-  };
+  const onChangeHandler=(e)=>{
+    handleChange(dispatch,setValue,e)
+  }
 
   return (
     <div className="settings">
+      <div className="content container" >
+        <h2>Content:</h2>
+        <Input
+        classname={"content"}
+        id={"content"}
+        onChangeHandler={onChangeHandler}
+        value={value}
+        type={'text'}
+        
+        />
+      </div>
       <div className="dimensions container">
         <h2>Dimensions:</h2>
         <Input
           classname={"width"}
           title={"width"}
           id={"width"}
-          handleChange={handleChange}
+          onChangeHandler={onChangeHandler}
           value={value}
+          type={'range'}
+          min={'0'}
+        max={'500'}
         />
         <Input
           classname={"height"}
           title={"height"}
           id={"height"}
-          handleChange={handleChange}
+          onChangeHandler={onChangeHandler}
           value={value}
+          type={'range'}
+          min={'0'}
+        max={'500'}
         />
       </div>
 
@@ -50,42 +64,144 @@ const Settings = () => {
           classname={"borderradius"}
           title={"Border Radius"}
           id={"borderRadius"}
-          handleChange={handleChange}
+          onChangeHandler={onChangeHandler}
           value={value}
+          type={'range'}
+          min={'0'}
+        max={'500'}
         />
         <Input
           classname={"borderwidth"}
           title={"Border Width"}
           id={"borderWidth"}
-          handleChange={handleChange}
+          onChangeHandler={onChangeHandler}
           value={value}
+          type={'range'}
+          min={'0'}
+        max={'500'}
         />
+       <div className="borderstylecontainer">
+        <h2>Border Style</h2>
+        <div className="borderstylewrapper">
+       <Input
+          classname={"borderstyle"}
 
-        <div className="borderstyle params">
-          <label htmlFor="borderstyle">Border Style</label>
-          <input
-            // type="range"
-            id="borderstyle"
-            min="0"
-            max="100"
-            value={value.borderStyle}
-            onChange={(e) => handleChange(e)}
-          />
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'solid'}
+        />
+        <Input
+          classname={"borderstyle"}
+      
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'dotted'}
+        />
+        <Input
+          classname={"borderstyle"}
+       
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'dashed'}
+        />
+        <Input
+          classname={"borderstyle"}
+       
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'double'}
+        />
+        <Input
+          classname={"borderstyle"}
+       
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'inset'}
+        />
+        <Input
+          classname={"borderstyle"}
+       
+          id={"borderStyle"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'outset'}
+        />
+        
         </div>
+       </div>
+       <Input
+        classname={"bordercolor"}
+        title={"Border Color"}
+        id={"borderColor"}
+        onChangeHandler={onChangeHandler}
+        value={value}
+        type={'color'}
+        />
       </div>
       <div className="background container">
         <h2>Background:</h2>
-        <div className="backgroundcolor params">
-          <label htmlFor="backgroundcolor">Background Color</label>
-          <input id="backgroundcolor" />
-        </div>
+        <Input
+        classname={"bgcolor"}
+        title={"Background Color"}
+        id={"backgroundColor"}
+        onChangeHandler={onChangeHandler}
+        value={value}
+        type={'color'}
+        />
       </div>
 
       <div className="cursor container ">
+      <div className="borderstylecontainer">
         <h2>Cursor:</h2>
-        <div className="cursortype params">
-          <label htmlFor="cursor">Cursor</label>
-          <input id="cursor" />
+        <div className="borderstylewrapper">
+        <Input
+          classname={"cursor"}
+       
+          id={"cursor"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'crosshair'}
+        />
+        <Input
+          classname={"cursor"}
+       
+          id={"cursor"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'pointer'}
+        />
+        <Input
+          classname={"cursor"}
+       
+          id={"cursor"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'progress'}
+        />
+        <Input
+          classname={"cursor"}
+       
+          id={"cursor"}
+          onChangeHandler={onChangeHandler}
+          value={value}
+          type={'radio'}
+          choice={'auto'}
+        />
+        </div>
         </div>
       </div>
     </div>

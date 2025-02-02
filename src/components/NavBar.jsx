@@ -1,12 +1,14 @@
 import React from "react";
 
-const NavBar = () => {
+const NavBar = ({setSection}) => {
   return (
     <div className="navbar">
-      <h2>Component Creator</h2>
+      <h2>CSS Generator</h2>
       <ul>
-        <li>Button</li>
-        <li>Inputs</li>
+      <li  onClick={()=>setSection('home')}>Home</li>
+        <li  onClick={()=>setSection('buttons')}>Buttons</li>
+        <li  onClick={()=>setSection('shadows')}>Shadows</li>
+        <li onClick={()=>setSection('inputs')} >Inputs</li>
       </ul>
     </div>
   );

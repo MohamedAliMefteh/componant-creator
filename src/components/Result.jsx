@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const Result = () => {
@@ -6,7 +5,7 @@ const Result = () => {
 
   return (
     <div className='result'>
-      <button style={style}>Button</button>
+      <button style={style}>{style.content}</button>
     </div>
   )
 }
